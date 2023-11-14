@@ -121,6 +121,33 @@ if options.solve == False:
     print('')
 
 
+import matplotlib.pyplot as plt
+
+def fraction_of_valid_addresses(base, limit, asize, num_tests):
+    valid_count = 0
+    for i in range(num_tests):
+        vaddr = int(asize * random.random())
+        if vaddr < limit:
+            valid_count += 1
+    return valid_count / num_tests
+
+# Liste von Grenzwerten
+limit_values = range(0, asize, int(asize/10))
+
+# Ergebnisse sammeln
+fractions = []
+for limit_value in limit_values:
+    fraction = fraction_of_valid_addresses(base, limit_value, asize, options.num)
+    fractions.append(fraction)
+
+# Graph erstellen
+plt.plot(limit_values, fractions)
+plt.title('Fraction of Valid Addresses vs Limit Value')
+plt.xlabel('Limit Value')
+plt.ylabel('Fraction of Valid Addresses')
+plt.show()
+
+
 
 
 
