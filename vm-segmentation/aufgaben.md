@@ -36,7 +36,7 @@ segmentation.py -a 128 -p 512 -b 0 -l 20 -B 512
     VA  4: 0x00000041 (decimal:   65) --> SEGMENTATION VIOLATION (SEG1)
 
 
-
+w
 segmentation.py -a 128 -p 512 -b 0 -l 20 -B 512
 -L 20 -s 1
 
