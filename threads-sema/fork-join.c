@@ -7,16 +7,16 @@ sem_t s;
 
 void *child(void *arg) {
     printf("child\n");
-    // use semaphore here
+    sem_post(&s); //increment semaphore
     return NULL;
 }
 
 int main(int argc, char *argv[]) {
     pthread_t p;
     printf("parent: begin\n");
-    // init semaphore here
+    sem_init(&s, 0, 0); //init semaphore to 0
     Pthread_create(&p, NULL, child, NULL);
-    // use semaphore here
+    sem_wait(&s); //will wait if child has not posted (since semaphore is 0), if child has posted, will decrement semaphore and continue
     printf("parent: end\n");
     return 0;
 }
